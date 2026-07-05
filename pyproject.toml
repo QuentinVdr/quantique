@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bataille-navale-quantique"
+version = "1.0.0"
+description = "Bataille navale quantique (superposition + mesure + intrication) — mini-projet Qiskit + Pygame"
+readme = "README.md"
+# < 3.14 : qiskit-aer et pygame n'ont pas encore de wheel pour Python 3.14
+requires-python = ">=3.9,<3.14"
+dependencies = [
+    "qiskit>=1.0",
+    "qiskit-aer>=0.14",
+    "pygame>=2.5",
+]
+
+# Uniquement pour (re)generer demo.gif via make_demo_gif.py, pas pour jouer
+[project.optional-dependencies]
+dev = ["pillow>=10"]
+
+# Modules a plat (pas de package) -> permet `pip install .`
+[tool.setuptools]
+py-modules = ["quantum_core", "battleship_model", "battleship_pygame"]
